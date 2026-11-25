@@ -1,6 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module.js';
+import { ProductsModule } from './products/products.module.js';
+import { OrdersModule } from './orders/orders.module.js';
+import { ReviewsModule } from './reviews/reviews.module.js';
+import { VerificationLogsModule } from './verification-logs/verification-logs.module.js';
+import { AuthModule } from './auth/auth.module.js';
 
 @Module({
   imports: [
@@ -15,6 +21,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
       synchronize: true, // Automatically creates MySQL tables from your entities
     }),
+    UsersModule,
+    ProductsModule,
+    OrdersModule,
+    ReviewsModule,
+    VerificationLogsModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
