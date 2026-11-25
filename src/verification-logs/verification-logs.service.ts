@@ -1,26 +1,28 @@
-import { Injectable } from '@nestjs/common';
-import { CreateVerificationLogDto } from './dto/create-verification-log.dto.js';
-import { UpdateVerificationLogDto } from './dto/update-verification-log.dto.js';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { VerificationLog, FlagStatus } from './entities/verification-log.entity.js';
 
 @Injectable()
 export class VerificationLogsService {
-  create(createVerificationLogDto: CreateVerificationLogDto) {
-    return 'This action adds a new verificationLog';
+  constructor(
+    @InjectRepository(VerificationLog)
+    private readonly logsRepository: Repository<VerificationLog>,
+  ) {}
+
+  findAll(flagStatus?: FlagStatus) {
+    if (flagStatus) {
+      return this.logsRepository.find({ where: { flagStatus }, relations: { review: true } });
+    }
+    return this.logsRepository.find({ relations: { review: true } });
   }
 
-  findAll() {
-    return `This action returns all verificationLogs`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} verificationLog`;
-  }
-
-  update(id: number, updateVerificationLogDto: UpdateVerificationLogDto) {
-    return `This action updates a #${id} verificationLog`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} verificationLog`;
+  async findOne(id: number) {
+    const log = await this.logsRepository.findOne({
+      where: { logId: id },
+      relations: { review: true },
+    });
+    if (!log) throw new NotFoundException(`No verification log exists with ID ${id}.`);
+    return log;
   }
 }
