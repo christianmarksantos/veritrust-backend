@@ -4,7 +4,6 @@
 **Project Type:** Individual Backend Prototype
 
 ## Project Overview
-<<<<<<< HEAD
 
 VeriTrust is a RESTful backend platform designed to combat fake product reviews ("review baiting") and deceptive e-commerce listings where delivered items do not match advertised seller images. It implements role-based e-commerce workflows alongside automated review text spam detection, unboxing image mismatch evaluation, verification logging, and dynamic product trust scoring.
 
@@ -39,7 +38,7 @@ The MySQL database (`veritrust_db`) consists of five normalized relational entit
 2. Open `http://localhost/phpmyadmin` and create a database named `veritrust_db` (or import `veritrust_db.sql`).
 
 ### 3. Install Dependencies & Configure Environment
-=======
+
 VeriTrust is a RESTful backend platform designed to combat fake product reviews ("review baiting") and deceptive e-commerce listings where delivered items do not match advertised seller images. It implements role-based e-commerce workflows alongside automated review text spam detection, unboxing image mismatch evaluation, verification logging, and dynamic product trust scoring.
 
 ## Technology Stack
@@ -58,7 +57,6 @@ The MySQL database (`veritrust_db`) consists of five normalized relational entit
 5. **`verification_logs`**: Stores automated `spamScore`, `imageMatchScore`, and `flagStatus` (`Clean`, `Flagged`, `Under Review`) metrics (`1:1` with reviews).
 
 ## Local Setup & Installation
->>>>>>> 29a19380b343795164a909d3087d169261d55004
 
 ### 1. Prerequisites
 * Node.js (LTS v18+)
@@ -73,7 +71,4 @@ The MySQL database (`veritrust_db`) consists of five normalized relational entit
 git clone [https://github.com/christianmarksantos/veritrust-backend.git](https://github.com/christianmarksantos/veritrust-backend.git)
 cd veritrust-backend
 npm install
-<<<<<<< HEAD
 ```
-=======
->>>>>>> 29a19380b343795164a909d3087d169261d55004
